@@ -10,7 +10,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="Segment Audience Dashboard Master",
+    page_title="Segment Audience Dashboard Customer",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
