@@ -54,21 +54,7 @@ bearer_token = st.sidebar.text_input("Bearer Token", type="password", value="")
 space_id = st.sidebar.text_input("Space ID", value="")
 page_count = st.sidebar.slider("Results per page", min_value=5, max_value=50, value=10)
 
-# Function to
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-#   fetch audience data
+# Function to fetch audiences with caching to improve performance
 @st.cache_data(ttl=300)
 def fetch_audiences(token, space_id, count=10):
     """Fetch audience data from Segment API"""
