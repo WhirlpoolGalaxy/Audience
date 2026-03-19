@@ -38,6 +38,9 @@ st.markdown("""
     h1 {
         color: #1f2937;
     }
+    #MainMenu {visibility: hidden;}
+    .stAppDeployButton {display: none;}
+    a[href="https://github.com/streamlit/streamlit"] {display: none;}
     </style>
 """, unsafe_allow_html=True)
 
