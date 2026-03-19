@@ -41,6 +41,10 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     .stAppDeployButton {display: none;}
     a[href="https://github.com/streamlit/streamlit"] {display: none;}
+    [data-testid="stToolbarActionButtonLabel"] {display: none;}
+    button:has([data-testid="stToolbarActionButtonLabel"]) {display: none !important;}
+    [data-testid="stToolbarActionButtonIcon"] {display: none !important;}
+    button:has([data-testid="stToolbarActionButtonIcon"]) {display: none !important;}
     </style>
 """, unsafe_allow_html=True)
 
