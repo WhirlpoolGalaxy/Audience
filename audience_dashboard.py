@@ -431,11 +431,23 @@ else:
 st.markdown("---")
 st.subheader("🔍 Detailed Audience View")
 
+audience_names = filtered_df['name'].tolist()
+
+# Preserve selection across reruns (e.g. after enable/disable triggers st.rerun())
+if 'detail_view_audience' not in st.session_state:
+    st.session_state.detail_view_audience = audience_names[0] if audience_names else None
+
+default_idx = 0
+if st.session_state.detail_view_audience in audience_names:
+    default_idx = audience_names.index(st.session_state.detail_view_audience)
+
 selected_audience = st.selectbox(
     "Select an audience to view details",
-    options=filtered_df['name'].tolist(),
-    index=0 if len(filtered_df) > 0 else None
+    options=audience_names,
+    index=default_idx,
+    key='detail_audience_selectbox'
 )
+st.session_state.detail_view_audience = selected_audience
 
 if selected_audience:
     audience_data = filtered_df[filtered_df['name'] == selected_audience].iloc[0]
@@ -465,7 +477,7 @@ if selected_audience:
 
     with col3:
         st.markdown("**Query & Filters**")
-        st.text_area("Query Definition", audience_data['query'], height=150, disabled=True)
+        st.text_area("Query Definition", audience_data['query'], height=150, disabled=True, key=f"query_{selected_audience}")
         st.write(f"**Filter by External IDs:**")
         st.write(audience_data['filter_by_external_ids'])
 
